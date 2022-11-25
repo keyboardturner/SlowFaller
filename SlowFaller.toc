@@ -1,0 +1,30 @@
+## Interface: 100002
+## Author: Keyboardturner
+## Version: 0.0.7
+## Title: Slow Faller
+## Notes: Temporarily rebinds the jump key to a slow fall spell when falling.
+## Title-enUS: Slow Faller
+## Notes-enUS: Temporarily rebinds the jump key to a slow fall spell when falling.
+## Title-frFR: Slow Faller
+## Notes-frFR: Relie temporairement la touche de saut à un sort de chute lente lors de la chute.
+## Title-esES: Slow Faller 
+## Notes-esES: Vuelve a vincular temporalmente la tecla de salto a un hechizo de caída lenta al caer.
+## Title-esMX: Slow Faller 
+## Notes-esMX: Vuelve a vincular temporalmente la tecla de salto a un hechizo de caída lenta al caer.
+## Title-deDE: Slow Faller 
+## Notes-deDE: Bindet die Sprungtaste beim Fallen vorübergehend wieder an einen langsamen Fallzauber.
+## Title-ptBR: Slow Faller 
+## Notes-ptBR: Temporariamente religa a tecla de salto para um feitiço de queda lenta ao cair.
+## Title-ruRU: двойной прыжок замедленное падение
+## Notes-ruRU: Временно привязывает клавишу прыжка к заклинанию медленного падения при падении.
+## Title-koKR: 이중 도약 저속 낙하
+## Notes-koKR: 낙하할 때 일시적으로 점프 키를 느린 낙하 주문으로 되돌립니다.
+## Title-zhCN: 二段跳缓落术
+## Notes-zhCN: 坠落时暂时将跳跃键重新绑定到缓慢坠落法术。
+## Title-zhTW: 二段跳缓落术
+## Notes-zhTW: 墜落時暫時將跳躍鍵重新綁定到緩慢墜落法術。
+## SavedVariables: SlowFaller_DB
+
+
+SlowFaller.lua
+Localization.lua
