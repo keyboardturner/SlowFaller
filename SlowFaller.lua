@@ -19,7 +19,6 @@ function SlowFallerPanel:InitializeOptions(event, arg1)
 			SlowFaller_DB = defaultsTable
 		end
 
-		print("initializing SlowFaller addon")
 		SlowFallerPanel.name = L["Name"]
 		InterfaceOptions_AddCategory(SlowFallerPanel)
 
@@ -126,7 +125,7 @@ else
 			DEFAULT_CHAT_FRAME:AddMessage(L["Oh no!"])
 			f.havewemet = true
 		end
-		--Hello friend! The SlowFaller addon is enabled but will not run any code because this class does not have slow fall, flap, or levitate.
+		--"Hello friend! This message is here to let you know that the SlowFaller addon is enabled on a class without a slow fall ability, and therefore will not be running any code.\nRequires: " .. SpellNames.spells
 	end)
 	return
 end
@@ -135,7 +134,7 @@ f:SetScript("OnEvent", function()
 		DEFAULT_CHAT_FRAME:AddMessage(L["Hello!"])
 		f.havewemet = true
 	end
-	--Hello friend! The SlowFaller addon is now enabled on a class with a slow fall ability. Double-jump to activate slow fall, flap, or levitate. Does not work in combat or while mounted.
+	--"Hello friend! The SlowFaller addon is now enabled on a class with a slow fall ability.\nDouble-jump to activate: " .. SpellNames.spells .. "\nDoes not work in combat or while mounted."
 end)
 
 local INVALID_SPELL = {

@@ -1,6 +1,6 @@
 ## Interface: 100002
 ## Author: Keyboardturner
-## Version: 0.0.7
+## Version: 0.0.8
 ## Title: Slow Faller
 ## Notes: Temporarily rebinds the jump key to a slow fall spell when falling.
 ## Title-enUS: Slow Faller
@@ -13,6 +13,8 @@
 ## Notes-esMX: Vuelve a vincular temporalmente la tecla de salto a un hechizo de caída lenta al caer.
 ## Title-deDE: Slow Faller 
 ## Notes-deDE: Bindet die Sprungtaste beim Fallen vorübergehend wieder an einen langsamen Fallzauber.
+## Title-itIT: Slow Faller 
+## Notes-itIT: Riassocia temporaneamente il tasto di salto a un incantesimo di caduta lenta durante la caduta.
 ## Title-ptBR: Slow Faller 
 ## Notes-ptBR: Temporariamente religa a tecla de salto para um feitiço de queda lenta ao cair.
 ## Title-ruRU: двойной прыжок замедленное падение
