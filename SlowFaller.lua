@@ -151,16 +151,24 @@ local SlowFallEvent = CreateFrame("Frame")
 
 --SlowFallEvent:RegisterEvent("ADDON_LOADED");
 SlowFallEvent:RegisterEvent("PLAYER_ENTERING_WORLD");
+SlowFallEvent:RegisterEvent("PLAYER_REGEN_DISABLED");
 
 function SlowFallEvent:OnEvent(event,arg1)
 
 	if event ~= "PLAYER_ENTERING_WORLD" then
+		if UnitAffectingCombat("player") == true then
+			return
+		else
+			ClearOverrideBindings(SlowFallEvent);
+		end
+	end
+
+	if event == "PLAYER_REGEN_DISABLED" then
 		ClearOverrideBindings(SlowFallEvent);
 	end
 
 	if event == "PLAYER_ENTERING_WORLD" then
 		SlowFallEvent:RegisterEvent("PLAYER_LOGOUT");
-		SlowFallEvent:RegisterEvent("PLAYER_REGEN_DISABLED");
 		SlowFallEvent:RegisterEvent("PLAYER_MOUNT_DISPLAY_CHANGED");
 
 		local spell = Spell:CreateFromSpellID(f.spellID);
@@ -170,7 +178,7 @@ function SlowFallEvent:OnEvent(event,arg1)
 
 		function SlowFallEvent.Jumpy(self, key)
 			--print(key) -- debug to find what key is pressed
-			if UnitAffectingCombat("player") then
+			if UnitAffectingCombat("player") == true then
 				return
 			elseif IsMounted() or select(1, IsUsableSpell(f.spellID)) == false  then --or (not badBuff) or (not C_UnitAuras.GetPlayerAuraBySpellID(INVALID_SPELL[k]))
 				ClearOverrideBindings(SlowFallEvent);
