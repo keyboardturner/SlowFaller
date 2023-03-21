@@ -1,6 +1,6 @@
-## Interface: 100002
+## Interface: 100007
 ## Author: Keyboardturner
-## Version: 0.1.0
+## Version: 0.1.2
 ## Title: Slow Faller
 ## Notes: Temporarily rebinds the jump key to a slow fall spell when falling.
 ## Title-enUS: Slow Faller
