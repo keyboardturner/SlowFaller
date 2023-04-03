@@ -21,10 +21,10 @@
 ## Notes-ruRU: Временно привязывает клавишу прыжка к заклинанию медленного падения при падении.
 ## Title-koKR: 이중 도약 저속 낙하
 ## Notes-koKR: 낙하할 때 일시적으로 점프 키를 느린 낙하 주문으로 되돌립니다.
-## Title-zhCN: 二段跳缓落术
-## Notes-zhCN: 坠落时暂时将跳跃键重新绑定到缓慢坠落法术。
-## Title-zhTW: 二段跳缓落术
-## Notes-zhTW: 墜落時暫時將跳躍鍵重新綁定到緩慢墜落法術。
+## Title-zhCN: SlowFaller：二段跳缓落术
+## Notes-zhCN: 坠落时，将跳跃键重新绑定至缓落法术。
+## Title-zhTW: SlowFaller：二段跳緩落術
+## Notes-zhTW: 墜落時，將跳躍鍵重新綁定至緩落法術。
 ## SavedVariables: SlowFaller_DB
 
 
