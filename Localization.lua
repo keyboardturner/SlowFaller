@@ -126,7 +126,7 @@ if LOCALE == "koKR" then
 	L["Levitate"] = Levitate
 return end
 
-if LOCALE == "zhCN" then
+if LOCALE == "zhCN" then -- official translation (thanks to github @EKE00372)
 	-- Simplified Chinese translations go here
 	L["Hello!"] = "嗨！ SlowFaller 已启用，现在可将缓落技能关联至二段跳。二段跳关联法术：" .. SpellNames.spells .. "\n在战斗或骑乘时不起作用。"
 	L["Oh no!"] = "嗨！ SlowFaller 已停用，因为你目前在玩的职业没有缓落技能。\n二段跳关联法术：" .. SpellNames.spells
@@ -137,7 +137,7 @@ if LOCALE == "zhCN" then
 	L["Levitate"] = Levitate
 return end
 
-if LOCALE == "zhTW" then
+if LOCALE == "zhTW" then -- official translation (thanks to github @EKE00372)
 	-- Traditional Chinese translations go here
 	L["Hello!"] = "嗨！ SlowFaller 已啟用，現在可將緩落技能關聯至二段跳。關聯法術：" .. SpellNames.spells .. "\n在戰鬥或騎乘時不起作用。"
 	L["Oh no!"] = "嗨！ SlowFaller 已停用，因為你目前在玩的職業沒有緩落技能。\n二段跳關聯法術：" .. SpellNames.spells
