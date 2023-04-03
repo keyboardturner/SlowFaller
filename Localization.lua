@@ -128,9 +128,9 @@ return end
 
 if LOCALE == "zhCN" then
 	-- Simplified Chinese translations go here
-	L["Hello!"] = "你好朋友！ 二段跳缓落术 插件现在在具有缓慢下降能力的类上启用。\n双跳激活： " .. SpellNames.spells .. "\n在战斗或骑乘时不起作用。"
-	L["Oh no!"] = "你好朋友！ 这条消息是为了让您知道 二段跳缓落术 插件在没有缓慢下降能力的类上启用，因此不会运行任何代码。\n需要: " .. SpellNames.spells
-	L["Name"] = "二段跳缓落术"
+	L["Hello!"] = "嗨！ SlowFaller 已启用，现在可将缓落技能关联至二段跳。二段跳关联法术：" .. SpellNames.spells .. "\n在战斗或骑乘时不起作用。"
+	L["Oh no!"] = "嗨！ SlowFaller 未启用，因为你目前在玩的职业没有缓落技能。\n二段跳关联法术：" .. SpellNames.spells
+	L["Name"] = "SlowFaller：二段跳缓落术"
 	L["Flight Form"] = Flightform
 	L["Flap"] = Flap
 	L["Slow Fall"] = Slowfall
@@ -139,9 +139,9 @@ return end
 
 if LOCALE == "zhTW" then
 	-- Traditional Chinese translations go here
-	L["Hello!"] = "你好朋友！ 二段跳缓落术 插件現在在具有緩慢下降能力的類上啟用。 双跳激活： " .. SpellNames.spells .. "\n在戰鬥或騎乘時不起作用。"
-	L["Oh no!"] = "你好朋友！ 這條消息是為了讓您知道 二段跳缓落术 插件在沒有緩慢下降能力的類上啟用，因此不會運行任何代碼。\n需要: " .. SpellNames.spells
-	L["Name"] = "二段跳缓落术"
+	L["Hello!"] = "嗨！ SlowFaller 已啟用，現在可將緩落技能關聯至二段跳。關聯法術：" .. SpellNames.spells .. "\n在戰鬥或騎乘時不起作用。"
+	L["Oh no!"] = "嗨！ SlowFaller 未啟用，因為你目前在玩的職業沒有緩落技能。\n二段跳關聯法術：" .. SpellNames.spells
+	L["Name"] = "SlowFaller：二段跳緩落術"
 	L["Flight Form"] = Flightform
 	L["Flap"] = Flap
 	L["Slow Fall"] = Slowfall
