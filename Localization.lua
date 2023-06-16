@@ -24,7 +24,7 @@ SpellNames.class = select(2, UnitClassBase("player"))
 if SpellNames.class == 5 then -- priest
 	SpellNames.spells = SpellNames.Levitate
 elseif SpellNames.class == 8 then -- mage
-	SpellNames.spells = SpellNames.Levitate
+	SpellNames.spells = SpellNames.Slowfall
 --[[
 elseif SpellNames.class == 10 then -- monk
 	SpellNames.spells = SpellNames.Levitate
