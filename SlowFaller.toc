@@ -1,6 +1,6 @@
-## Interface: 100107
+## Interface: 100200
 ## Author: Keyboardturner
-## Version: 0.1.7
+## Version: @project-version@
 ## Title: Slow Faller
 ## Notes: Temporarily rebinds the jump key to a slow fall spell when falling.
 ## IconTexture: Interface/Icons/Spell_magic_featherfall.blp
@@ -27,6 +27,9 @@
 ## Title-zhTW: SlowFaller：二段跳緩落術
 ## Notes-zhTW: 墜落時，將跳躍鍵重新綁定至緩落法術。
 ## SavedVariables: SlowFaller_DB
+## X-Curse-Project-ID: 709681
+## X-WoWI-ID: 26476
+## X-Wago-ID: lQNlvDKe
 
 
 SlowFaller.lua
