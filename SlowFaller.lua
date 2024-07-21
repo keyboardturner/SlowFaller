@@ -20,7 +20,9 @@ function SlowFallerPanel:InitializeOptions(event, arg1)
 		end
 
 		SlowFallerPanel.name = L["Name"]
-		InterfaceOptions_AddCategory(SlowFallerPanel)
+		local category, layout = Settings.RegisterCanvasLayoutCategory(SlowFallerPanel, SlowFallerPanel.name, SlowFallerPanel.name);
+		category.ID = SlowFallerPanel.name;
+		Settings.RegisterAddOnCategory(category)
 
 		-- Create the scrolling parent frame and size it to fit inside the texture
 		SlowFallerPanel.scrollFrame = CreateFrame("ScrollFrame", nil, SlowFallerPanel, "UIPanelScrollFrameTemplate")
