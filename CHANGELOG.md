@@ -1,3 +1,7 @@
+# 0.2.2
+
+TOC updates for TWW
+
 # 0.2.1
 
 toc bump to 10.2.7
