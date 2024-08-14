@@ -182,7 +182,7 @@ function SlowFallEvent:OnEvent(event,arg1)
 			--print(key) -- debug to find what key is pressed
 			if UnitAffectingCombat("player") == true then
 				return
-			elseif IsMounted() or select(1, IsUsableSpell(f.spellID)) == false  then --or (not badBuff) or (not C_UnitAuras.GetPlayerAuraBySpellID(INVALID_SPELL[k]))
+			elseif IsMounted() or select(1, C_Spell.IsSpellUsable(f.spellID)) == false  then --or (not badBuff) or (not C_UnitAuras.GetPlayerAuraBySpellID(INVALID_SPELL[k]))
 				ClearOverrideBindings(SlowFallEvent);
 				return
 			else
