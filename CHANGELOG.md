@@ -1,3 +1,7 @@
+# 0.2.4
+
+Dracthyr-proof double jump in prep for 11.0.5
+
 # 0.2.3
 
 Fix for 11.0.2, oop

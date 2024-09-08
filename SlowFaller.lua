@@ -106,11 +106,13 @@ f.priest = select(2, UnitClassBase("player")) == 5
 f.mage = select(2, UnitClassBase("player")) == 8
 f.monk = select(2, UnitClassBase("player")) == 10
 f.druid = select(2, UnitClassBase("player")) == 11
+f.dracthyrA = select(3, UnitRace("player")) == 52
+f.dracthyrH = select(3, UnitRace("player")) == 70
 
-if f.priest then -- priest
+if f.priest and (not f.dracthyrA and not f.dracthyrH) then -- priest
 	f.spellID = 1706 -- levitate spell
 	f.buffID = 111759 -- levitate buff
-elseif f.mage then -- mage
+elseif f.mage and (not f.dracthyrA and not f.dracthyrH)  then -- mage
 	f.spellID = 130 -- slow fall spell
 	f.buffID = 130 -- slow fall buff
 --[[
@@ -118,7 +120,7 @@ elseif f.monk then -- monk (needs more work for the cancel action, will look at 
 	f.spellID = 125883 -- zen flight spell
 	f.buffID = 125883 -- zen flight buff
 	]]
-elseif f.druid then -- druid
+elseif f.druid and (not f.dracthyrA and not f.dracthyrH)  then -- druid
 	f.spellID = 164862 -- flap spell
 	f.buffID = 164862 -- flap buff
 else
