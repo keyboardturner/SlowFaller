@@ -1,3 +1,7 @@
+# 0.2.5
+
+Added Fungal Footpads buff to override slowfaller behavior
+
 # 0.2.4
 
 Dracthyr-proof double jump in prep for 11.0.5

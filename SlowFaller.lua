@@ -148,6 +148,7 @@ local INVALID_SPELL = {
 	323695, -- Faerie Dust
 	356280, -- Dragon Companion's Vigilance
 	383363, -- Lift Off
+	448876, -- Fungal Footpads (delve double jump)
 	--1459, -- Arcane Intellect test
 };
 
