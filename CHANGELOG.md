@@ -1,3 +1,7 @@
+# 0.2.6
+
+11.0.5 toc update
+
 # 0.2.5
 
 Added Fungal Footpads buff to override slowfaller behavior
