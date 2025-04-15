@@ -120,7 +120,7 @@ local function GetEnabledForCurrentClass()
 end
 
 local function SetEnabledForCurrentClass(enabled)
-    SlowFaller_DB[PLAYER_CLASS].Enabled = enabled;
+    SlowFaller_DB[PLAYER_CLASS].Enable = enabled;
 end
 
 local function GetOverrideSpellIDForCurrentClass()
@@ -231,6 +231,7 @@ enableLabel:SetPoint("BOTTOM");
 
 local enableCheckbox = CreateFrame("CheckButton", nil, enableContainer, "UICheckButtonTemplate");
 enableCheckbox:SetPoint("LEFT", enableContainer, "CENTER", enableContainer:GetWidth() / 4, 0);
+enableCheckbox:SetChecked(GetEnabledForCurrentClass());
 
 tinsert(elements, enableContainer);
 
