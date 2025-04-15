@@ -35,4 +35,4 @@
 Localization.lua
 
 Settings.lua
-SlowFallerNew.lua
+SlowFaller.lua
