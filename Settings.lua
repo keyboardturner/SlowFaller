@@ -189,7 +189,6 @@ local function SetupSimpleTooltipForFrame(frame, tooltipText, anchor, instructio
     end);
 end
 
-
 ------------
 --- settings UI setup
 
