@@ -27,10 +27,12 @@
 ## Title-zhTW: SlowFaller：二段跳緩落術
 ## Notes-zhTW: 墜落時，將跳躍鍵重新綁定至緩落法術。
 ## SavedVariables: SlowFaller_DB
+## LoadSavedVariablesFirst: 1
 ## X-Curse-Project-ID: 709681
 ## X-WoWI-ID: 26476
 ## X-Wago-ID: lQNlvDKe
 
-
-SlowFaller.lua
 Localization.lua
+
+Settings.lua
+SlowFallerNew.lua

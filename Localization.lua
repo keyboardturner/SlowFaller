@@ -1,4 +1,4 @@
-local SlowFaller, L = ...; -- Let's use the private table passed to every .lua 
+local addonName, L = ...; -- Let's use the private table passed to every .lua 
 
 local function defaultFunc(L, key)
  -- If this function was called, we have no localization for this key.
@@ -45,6 +45,18 @@ if LOCALE == "enUS" then
 	L["Flap"] = Flap
 	L["Slow Fall"] = Slowfall
 	L["Levitate"] = Levitate
+	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
+	L["SettingsClassText"] = "Current Class: %s"
+	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
+	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
+	L["SettingsOverrideLabel"] = "SlowFaller Spell"
+	L["SettingsOverrideTooltip"] = "The spell that will be cast when you activate SlowFaller with a double-jump (or triple-jump for Demon Hunters)."
+	L["SettingsOverrideTooltipInstruction"] = "This can be either a spell name or ID."
+	L["SettingsSaveButtonLabel"] = SAVE
+	L["SettingsDefaultsButtonLabel"] = "Reset to Class Defaults"
+	L["SettingsDefaultsButtonTooltipEnabled"] = "Reset override configuration to the defaults for your current class."
+	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-CLICK to reset your configuration to the defaults for your current class."
 return end
 
 if LOCALE == "esES" or LOCALE == "esMX" then -- official translation (thanks to twitter @RomanValoppi )
@@ -56,6 +68,18 @@ if LOCALE == "esES" or LOCALE == "esMX" then -- official translation (thanks to 
 	L["Flap"] = Flap
 	L["Slow Fall"] = Slowfall
 	L["Levitate"] = Levitate
+	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
+	L["SettingsClassText"] = "Current Class: %s"
+	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
+	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
+	L["SettingsOverrideLabel"] = "SlowFaller Spell"
+	L["SettingsOverrideTooltip"] = "The spell that will be cast when you activate SlowFaller with a double-jump (or triple-jump for Demon Hunters)."
+	L["SettingsOverrideTooltipInstruction"] = "This can be either a spell name or ID."
+	L["SettingsSaveButtonLabel"] = SAVE
+	L["SettingsDefaultsButtonLabel"] = "Reset to Class Defaults"
+	L["SettingsDefaultsButtonTooltipEnabled"] = "Reset override configuration to the defaults for your current class."
+	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-CLICK to reset your configuration to the defaults for your current class."
 return end
 
 if LOCALE == "deDE" then
@@ -67,6 +91,18 @@ if LOCALE == "deDE" then
 	L["Flap"] = Flap
 	L["Slow Fall"] = Slowfall
 	L["Levitate"] = Levitate
+	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
+	L["SettingsClassText"] = "Current Class: %s"
+	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
+	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
+	L["SettingsOverrideLabel"] = "SlowFaller Spell"
+	L["SettingsOverrideTooltip"] = "The spell that will be cast when you activate SlowFaller with a double-jump (or triple-jump for Demon Hunters)."
+	L["SettingsOverrideTooltipInstruction"] = "This can be either a spell name or ID."
+	L["SettingsSaveButtonLabel"] = SAVE
+	L["SettingsDefaultsButtonLabel"] = "Reset to Class Defaults"
+	L["SettingsDefaultsButtonTooltipEnabled"] = "Reset override configuration to the defaults for your current class."
+	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-CLICK to reset your configuration to the defaults for your current class."
 return end
 
 if LOCALE == "frFR" then -- official translation (thanks to twitter @Solanya_ )
@@ -78,6 +114,18 @@ if LOCALE == "frFR" then -- official translation (thanks to twitter @Solanya_ )
 	L["Flap"] = Flap
 	L["Slow Fall"] = Slowfall
 	L["Levitate"] = Levitate
+	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
+	L["SettingsClassText"] = "Current Class: %s"
+	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
+	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
+	L["SettingsOverrideLabel"] = "SlowFaller Spell"
+	L["SettingsOverrideTooltip"] = "The spell that will be cast when you activate SlowFaller with a double-jump (or triple-jump for Demon Hunters)."
+	L["SettingsOverrideTooltipInstruction"] = "This can be either a spell name or ID."
+	L["SettingsSaveButtonLabel"] = SAVE
+	L["SettingsDefaultsButtonLabel"] = "Reset to Class Defaults"
+	L["SettingsDefaultsButtonTooltipEnabled"] = "Reset override configuration to the defaults for your current class."
+	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-CLICK to reset your configuration to the defaults for your current class."
 return end
 
 if LOCALE == "itIT" then
@@ -89,6 +137,18 @@ if LOCALE == "itIT" then
 	L["Flap"] = Flap
 	L["Slow Fall"] = Slowfall
 	L["Levitate"] = Levitate
+	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
+	L["SettingsClassText"] = "Current Class: %s"
+	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
+	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
+	L["SettingsOverrideLabel"] = "SlowFaller Spell"
+	L["SettingsOverrideTooltip"] = "The spell that will be cast when you activate SlowFaller with a double-jump (or triple-jump for Demon Hunters)."
+	L["SettingsOverrideTooltipInstruction"] = "This can be either a spell name or ID."
+	L["SettingsSaveButtonLabel"] = SAVE
+	L["SettingsDefaultsButtonLabel"] = "Reset to Class Defaults"
+	L["SettingsDefaultsButtonTooltipEnabled"] = "Reset override configuration to the defaults for your current class."
+	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-CLICK to reset your configuration to the defaults for your current class."
 return end
 
 if LOCALE == "ptBR" then
@@ -100,6 +160,18 @@ if LOCALE == "ptBR" then
 	L["Flap"] = Flap
 	L["Slow Fall"] = Slowfall
 	L["Levitate"] = Levitate
+	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
+	L["SettingsClassText"] = "Current Class: %s"
+	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
+	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
+	L["SettingsOverrideLabel"] = "SlowFaller Spell"
+	L["SettingsOverrideTooltip"] = "The spell that will be cast when you activate SlowFaller with a double-jump (or triple-jump for Demon Hunters)."
+	L["SettingsOverrideTooltipInstruction"] = "This can be either a spell name or ID."
+	L["SettingsSaveButtonLabel"] = SAVE
+	L["SettingsDefaultsButtonLabel"] = "Reset to Class Defaults"
+	L["SettingsDefaultsButtonTooltipEnabled"] = "Reset override configuration to the defaults for your current class."
+	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-CLICK to reset your configuration to the defaults for your current class."
 	-- Note that the EU Portuguese WoW client also
 	-- uses the Brazilian Portuguese locale code.
 return end
@@ -113,6 +185,18 @@ if LOCALE == "ruRU" then
 	L["Flap"] = Flap
 	L["Slow Fall"] = Slowfall
 	L["Levitate"] = Levitate
+	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
+	L["SettingsClassText"] = "Current Class: %s"
+	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
+	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
+	L["SettingsOverrideLabel"] = "SlowFaller Spell"
+	L["SettingsOverrideTooltip"] = "The spell that will be cast when you activate SlowFaller with a double-jump (or triple-jump for Demon Hunters)."
+	L["SettingsOverrideTooltipInstruction"] = "This can be either a spell name or ID."
+	L["SettingsSaveButtonLabel"] = SAVE
+	L["SettingsDefaultsButtonLabel"] = "Reset to Class Defaults"
+	L["SettingsDefaultsButtonTooltipEnabled"] = "Reset override configuration to the defaults for your current class."
+	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-CLICK to reset your configuration to the defaults for your current class."
 return end
 
 if LOCALE == "koKR" then
@@ -124,6 +208,18 @@ if LOCALE == "koKR" then
 	L["Flap"] = Flap
 	L["Slow Fall"] = Slowfall
 	L["Levitate"] = Levitate
+	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
+	L["SettingsClassText"] = "Current Class: %s"
+	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
+	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
+	L["SettingsOverrideLabel"] = "SlowFaller Spell"
+	L["SettingsOverrideTooltip"] = "The spell that will be cast when you activate SlowFaller with a double-jump (or triple-jump for Demon Hunters)."
+	L["SettingsOverrideTooltipInstruction"] = "This can be either a spell name or ID."
+	L["SettingsSaveButtonLabel"] = SAVE
+	L["SettingsDefaultsButtonLabel"] = "Reset to Class Defaults"
+	L["SettingsDefaultsButtonTooltipEnabled"] = "Reset override configuration to the defaults for your current class."
+	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-CLICK to reset your configuration to the defaults for your current class."
 return end
 
 if LOCALE == "zhCN" then -- official translation (thanks to github @EKE00372)
@@ -135,6 +231,18 @@ if LOCALE == "zhCN" then -- official translation (thanks to github @EKE00372)
 	L["Flap"] = Flap
 	L["Slow Fall"] = Slowfall
 	L["Levitate"] = Levitate
+	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
+	L["SettingsClassText"] = "Current Class: %s"
+	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
+	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
+	L["SettingsOverrideLabel"] = "SlowFaller Spell"
+	L["SettingsOverrideTooltip"] = "The spell that will be cast when you activate SlowFaller with a double-jump (or triple-jump for Demon Hunters)."
+	L["SettingsOverrideTooltipInstruction"] = "This can be either a spell name or ID."
+	L["SettingsSaveButtonLabel"] = SAVE
+	L["SettingsDefaultsButtonLabel"] = "Reset to Class Defaults"
+	L["SettingsDefaultsButtonTooltipEnabled"] = "Reset override configuration to the defaults for your current class."
+	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-CLICK to reset your configuration to the defaults for your current class."
 return end
 
 if LOCALE == "zhTW" then -- official translation (thanks to github @EKE00372)
@@ -146,4 +254,16 @@ if LOCALE == "zhTW" then -- official translation (thanks to github @EKE00372)
 	L["Flap"] = Flap
 	L["Slow Fall"] = Slowfall
 	L["Levitate"] = Levitate
+	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
+	L["SettingsClassText"] = "Current Class: %s"
+	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
+	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
+	L["SettingsOverrideLabel"] = "SlowFaller Spell"
+	L["SettingsOverrideTooltip"] = "The spell that will be cast when you activate SlowFaller with a double-jump (or triple-jump for Demon Hunters)."
+	L["SettingsOverrideTooltipInstruction"] = "This can be either a spell name or ID."
+	L["SettingsSaveButtonLabel"] = SAVE
+	L["SettingsDefaultsButtonLabel"] = "Reset to Class Defaults"
+	L["SettingsDefaultsButtonTooltipEnabled"] = "Reset override configuration to the defaults for your current class."
+	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-CLICK to reset your configuration to the defaults for your current class."
 return end
