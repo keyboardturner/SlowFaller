@@ -204,6 +204,8 @@ UI.fixedWidth = 300;
 UI.minimumHeight = 300;
 UI.heightPadding = 20;
 
+tinsert(UISpecialFrames, UI:GetName());
+
 local dragBar = CreateFrame("Frame", nil, UI, "PanelDragBarTemplate");
 dragBar:SetHeight(28);
 dragBar:SetPoint("TOPLEFT");
@@ -216,6 +218,7 @@ classText:SetWidth(UI:GetWidth());
 classText:SetJustifyH("CENTER");
 classText:SetJustifyV("MIDDLE");
 classText:SetTextScale(1.2);
+
 tinsert(elements, classText);
 
 local enableContainer = CreateFrame("Frame", nil, UI);
