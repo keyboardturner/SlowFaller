@@ -21,6 +21,9 @@ end
 
 function EventFrame:OnKeyDown(key)
     if not IsJumpKey(key) or IN_COMBAT then
+        if not IN_COMBAT then
+            ClearOverrideBindings(self);
+        end
         return;
     end
 
