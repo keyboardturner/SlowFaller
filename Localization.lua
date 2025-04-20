@@ -48,6 +48,7 @@ if LOCALE == "enUS" then
 	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
 	L["SettingsClassText"] = "Current Class: %s"
 	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsCancelCheckboxLabel"] = "Cancel aura if already present: "
 	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
 	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
 	L["SettingsOverrideLabel"] = "SlowFaller Spell"
@@ -71,6 +72,7 @@ if LOCALE == "esES" or LOCALE == "esMX" then -- official translation (thanks to 
 	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
 	L["SettingsClassText"] = "Current Class: %s"
 	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsCancelCheckboxLabel"] = "Cancel aura if already present: "
 	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
 	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
 	L["SettingsOverrideLabel"] = "SlowFaller Spell"
@@ -94,6 +96,7 @@ if LOCALE == "deDE" then
 	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
 	L["SettingsClassText"] = "Current Class: %s"
 	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsCancelCheckboxLabel"] = "Cancel aura if already present: "
 	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
 	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
 	L["SettingsOverrideLabel"] = "SlowFaller Spell"
@@ -117,6 +120,7 @@ if LOCALE == "frFR" then -- official translation (thanks to twitter @Solanya_ )
 	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
 	L["SettingsClassText"] = "Current Class: %s"
 	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsCancelCheckboxLabel"] = "Cancel aura if already present: "
 	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
 	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
 	L["SettingsOverrideLabel"] = "SlowFaller Spell"
@@ -140,6 +144,7 @@ if LOCALE == "itIT" then
 	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
 	L["SettingsClassText"] = "Current Class: %s"
 	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsCancelCheckboxLabel"] = "Cancel aura if already present: "
 	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
 	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
 	L["SettingsOverrideLabel"] = "SlowFaller Spell"
@@ -163,6 +168,7 @@ if LOCALE == "ptBR" then
 	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
 	L["SettingsClassText"] = "Current Class: %s"
 	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsCancelCheckboxLabel"] = "Cancel aura if already present: "
 	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
 	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
 	L["SettingsOverrideLabel"] = "SlowFaller Spell"
@@ -188,6 +194,7 @@ if LOCALE == "ruRU" then
 	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
 	L["SettingsClassText"] = "Current Class: %s"
 	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsCancelCheckboxLabel"] = "Cancel aura if already present: "
 	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
 	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
 	L["SettingsOverrideLabel"] = "SlowFaller Spell"
@@ -211,6 +218,7 @@ if LOCALE == "koKR" then
 	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
 	L["SettingsClassText"] = "Current Class: %s"
 	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsCancelCheckboxLabel"] = "Cancel aura if already present: "
 	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
 	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
 	L["SettingsOverrideLabel"] = "SlowFaller Spell"
@@ -234,6 +242,7 @@ if LOCALE == "zhCN" then -- official translation (thanks to github @EKE00372)
 	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
 	L["SettingsClassText"] = "Current Class: %s"
 	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsCancelCheckboxLabel"] = "Cancel aura if already present: "
 	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
 	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
 	L["SettingsOverrideLabel"] = "SlowFaller Spell"
@@ -257,6 +266,7 @@ if LOCALE == "zhTW" then -- official translation (thanks to github @EKE00372)
 	L["ThisCannotBeUndone"] = RED_FONT_COLOR:WrapTextInColorCode("This cannot be undone!")
 	L["SettingsClassText"] = "Current Class: %s"
 	L["SettingsEnableCheckboxLabel"] = "Enable SlowFaller for this class: "
+	L["SettingsCancelCheckboxLabel"] = "Cancel aura if already present: "
 	L["SettingsSpellInfoNoSpellName"] = "No spell chosen"
 	L["SettingsSpellInfoNoSpellDesc"] = "Type in the name or ID of a spell above|nand hit " .. KEY_ENTER .. " to preview the spell."
 	L["SettingsOverrideLabel"] = "SlowFaller Spell"

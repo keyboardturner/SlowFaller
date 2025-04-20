@@ -40,54 +40,67 @@ SlowFaller.CLASSES = CLASSES;
 local DefaultSettingsPerClass = {
     [CLASSES.WARRIOR] = {
         SpellID = nil,
+        Cancel = false,
         Enable = true,
     },
     [CLASSES.PALADIN] = {
         SpellID = nil,
+        Cancel = false,
         Enable = true,
     },
     [CLASSES.HUNTER] = {
         SpellID = nil,
+        Cancel = false,
         Enable = true,
     },
     [CLASSES.ROGUE] = {
         SpellID = nil,
+        Cancel = false,
         Enable = true,
     },
     [CLASSES.PRIEST] = {
         SpellID = 1706, -- levitate spell
+        Cancel = true,
         Enable = true,
     },
     [CLASSES.DEATHKNIGHT] = {
         SpellID = nil,
+        Cancel = false,
         Enable = true,
     },
     [CLASSES.SHAMAN] = {
         SpellID = nil,
+        Cancel = false,
         Enable = true,
     },
     [CLASSES.MAGE] = {
         SpellID = 130, -- slow fall spell
+        Cancel = true,
         Enable = true,
     },
     [CLASSES.WARLOCK] = {
         SpellID = nil,
+        Cancel = false,
         Enable = true,
     },
     [CLASSES.MONK] = {
         SpellID = nil,
+        Cancel = false,
         Enable = true,
     },
     [CLASSES.DRUID] = {
         SpellID = 164862, -- flap spell
+        Cancel = true,
         Enable = true,
     },
     [CLASSES.DEMONHUNTER] = {
         SpellID = 131347,
+        Cancel = false,
         Enable = true,
     },
     [CLASSES.EVOKER] = {
         SpellID = nil,
+        Cancel = false,
         Enable = true,
     },
 };
@@ -121,6 +134,15 @@ end
 
 local function SetEnabledForCurrentClass(enabled)
     SlowFaller_DB[PLAYER_CLASS].Enable = enabled;
+end
+
+local function GetCancelAuraForCurrentClass()
+    local settings = GetSettingsForCurrentClass();
+    return settings.Cancel;
+end
+
+local function SetCancelAuraForCurrentClass(cancel)
+    SlowFaller_DB[PLAYER_CLASS].Cancel = cancel;
 end
 
 local function GetOverrideSpellIDForCurrentClass()
@@ -168,6 +190,10 @@ function Settings.ShouldHandleJumpCommand()
     end
 
     return true;
+end
+
+function Settings.ShouldCancelAura()
+    return GetCancelAuraForCurrentClass();
 end
 
 SlowFaller.Settings = Settings;
@@ -235,6 +261,21 @@ enableCheckbox:SetChecked(GetEnabledForCurrentClass());
 
 tinsert(elements, enableContainer);
 
+local cancelContainer = CreateFrame("Frame", nil, UI);
+cancelContainer:SetSize(300, 20);
+
+local cancelLabel = cancelContainer:CreateFontString(nil, "ARTWORK", "GameFontWhite");
+cancelLabel:SetJustifyH("CENTER");
+cancelLabel:SetText(L.SettingsCancelCheckboxLabel);
+cancelLabel:SetPoint("TOPLEFT", 25, 0);
+cancelLabel:SetPoint("BOTTOM");
+
+local cancelCheckbox = CreateFrame("CheckButton", nil, cancelContainer, "UICheckButtonTemplate");
+cancelCheckbox:SetPoint("LEFT", cancelContainer, "CENTER", cancelContainer:GetWidth() / 4, 0);
+cancelCheckbox:SetChecked(GetCancelAuraForCurrentClass());
+
+tinsert(elements, cancelContainer);
+
 local overrideContainer = CreateFrame("Frame", nil, UI);
 overrideContainer:SetSize(300, 20);
 
@@ -297,7 +338,7 @@ end);
 defaultsButton:SetScript("OnEvent", function(self, event)
     if event == "MODIFIER_STATE_CHANGED" then
         self:SetEnabled(IsShiftKeyDown());
-        if defaultsButton:IsMouseOver() then
+        if defaultsButton:IsShown() and defaultsButton:IsMouseOver() then
             defaultsButton:GetScript("OnEnter")(defaultsButton);
         end
     end
@@ -375,6 +416,12 @@ local function OnEnableCheckboxClicked()
 end
 enableCheckbox:SetScript("OnClick", OnEnableCheckboxClicked);
 
+local function OnCancelCheckboxClicked()
+    isDirty = true;
+    UpdateTitle();
+end
+cancelCheckbox:SetScript("OnClick", OnCancelCheckboxClicked);
+
 --- for our overrideEditBox
 local function OnEditBoxEnterPressed()
     local spellID = GetOverrideEditBoxSpellID();
@@ -385,6 +432,9 @@ overrideEditBox:SetScript("OnEnterPressed", OnEditBoxEnterPressed);
 local function OnSaveButtonClicked()
     local enable = enableCheckbox:GetChecked();
     SetEnabledForCurrentClass(enable);
+
+    local cancel = cancelCheckbox:GetChecked();
+    SetCancelAuraForCurrentClass(cancel);
 
     local spellID = GetOverrideEditBoxSpellID();
     SetOverrideSpellIDForCurrentClass(spellID);

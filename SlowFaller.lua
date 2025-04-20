@@ -40,9 +40,13 @@ function EventFrame:OnKeyDown(key)
         end
 
         local spellID = SETTINGS.GetOverrideSpellID();
+        if not spellID then
+            return;
+        end
         local spellName = C_Spell.GetSpellName(spellID);
         local spellAura = C_UnitAuras.GetAuraDataBySpellName("player", spellName);
-        if spellAura then
+        local shouldCancel = SETTINGS.ShouldCancelAura();
+        if spellAura and shouldCancel then
             local canCancel = C_UnitAuras.IsAuraFilteredOutByInstanceID("player", spellAura.auraInstanceID, "CANCELABLE");
             if canCancel then
                 CancelSpellByName(spellName);
