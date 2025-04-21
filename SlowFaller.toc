@@ -1,4 +1,4 @@
-## Interface: 110100
+## Interface: 110105
 ## Author: Keyboardturner
 ## Version: @project-version@
 ## Title: Slow Faller
@@ -28,6 +28,17 @@
 ## Notes-zhTW: 墜落時，將跳躍鍵重新綁定至緩落法術。
 ## SavedVariables: SlowFaller_DB
 ## LoadSavedVariablesFirst: 1
+## Category-enUS: Buffs & Debuffs
+## Category-deDE: Buffs & Debuffs
+## Category-esES: Beneficios y Perjuicios
+## Category-esMX: Beneficios y Perjuicios
+## Category-frFR: Améliorations et Affaiblissements
+## Category-itIT: Benefici e penalità
+## Category-koKR: 강화 및 약화 효과
+## Category-ptBR: Bônus e Penalidades
+## Category-ruRU: Баффы и дебаффы
+## Category-zhCN: 增益和减益
+## Category-zhTW: 增益與減益
 ## X-Curse-Project-ID: 709681
 ## X-WoWI-ID: 26476
 ## X-Wago-ID: lQNlvDKe
