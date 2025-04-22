@@ -40,32 +40,38 @@ SlowFaller.CLASSES = CLASSES;
 local DefaultSettingsPerClass = {
     [CLASSES.WARRIOR] = {
         SpellID = nil,
-        Cancel = false,
+        Cancel = true,
+        dracthyr = false,
         Enable = true,
     },
     [CLASSES.PALADIN] = {
         SpellID = nil,
-        Cancel = false,
+        Cancel = true,
+        dracthyr = false,
         Enable = true,
     },
     [CLASSES.HUNTER] = {
         SpellID = nil,
-        Cancel = false,
+        Cancel = true,
+        dracthyr = false,
         Enable = true,
     },
     [CLASSES.ROGUE] = {
         SpellID = nil,
-        Cancel = false,
+        Cancel = true,
+        dracthyr = false,
         Enable = true,
     },
     [CLASSES.PRIEST] = {
         SpellID = 1706, -- levitate spell
         Cancel = true,
+        dracthyr = false,
         Enable = true,
     },
     [CLASSES.DEATHKNIGHT] = {
         SpellID = nil,
-        Cancel = false,
+        Cancel = true,
+        dracthyr = false,
         Enable = true,
     },
     [CLASSES.SHAMAN] = {
@@ -76,31 +82,37 @@ local DefaultSettingsPerClass = {
     [CLASSES.MAGE] = {
         SpellID = 130, -- slow fall spell
         Cancel = true,
+        dracthyr = false,
         Enable = true,
     },
     [CLASSES.WARLOCK] = {
         SpellID = nil,
-        Cancel = false,
+        Cancel = true,
+        dracthyr = false,
         Enable = true,
     },
     [CLASSES.MONK] = {
         SpellID = nil,
-        Cancel = false,
+        Cancel = true,
+        dracthyr = false,
         Enable = true,
     },
     [CLASSES.DRUID] = {
         SpellID = 164862, -- flap spell
         Cancel = true,
+        dracthyr = false,
         Enable = true,
     },
     [CLASSES.DEMONHUNTER] = {
         SpellID = 131347,
         Cancel = true,
+        dracthyr = false,
         Enable = true,
     },
     [CLASSES.EVOKER] = {
         SpellID = nil,
-        Cancel = false,
+        Cancel = true,
+        dracthyr = false,
         Enable = true,
     },
 };
@@ -143,6 +155,15 @@ end
 
 local function SetCancelAuraForCurrentClass(cancel)
     SlowFaller_DB[PLAYER_CLASS].Cancel = cancel;
+end
+
+local function GetDracthyrAuraForCurrentClass()
+    local settings = GetSettingsForCurrentClass();
+    return settings.Dracthyr;
+end
+
+local function SetDracthyrAuraForCurrentClass(dracthyr)
+    SlowFaller_DB[PLAYER_CLASS].Dracthyr = dracthyr;
 end
 
 local function GetOverrideSpellIDForCurrentClass()
@@ -194,6 +215,10 @@ end
 
 function Settings.ShouldCancelAura()
     return GetCancelAuraForCurrentClass();
+end
+
+function Settings.ShouldDracthyrAura()
+    return GetDracthyrAuraForCurrentClass();
 end
 
 SlowFaller.Settings = Settings;
@@ -275,6 +300,26 @@ cancelCheckbox:SetPoint("LEFT", cancelContainer, "CENTER", cancelContainer:GetWi
 cancelCheckbox:SetChecked(GetCancelAuraForCurrentClass());
 
 tinsert(elements, cancelContainer);
+
+local DracthyrA = select(3, UnitRace("player")) == 52
+local DracthyrH = select(3, UnitRace("player")) == 70
+
+local dracthyrContainer = CreateFrame("Frame", nil, UI);
+dracthyrContainer:SetSize(300, 20);
+
+local dracthyrLabel = dracthyrContainer:CreateFontString(nil, "ARTWORK", "GameFontWhite");
+dracthyrLabel:SetJustifyH("CENTER");
+dracthyrLabel:SetText(L.SettingsDracthyrCheckboxLabel);
+dracthyrLabel:SetPoint("TOPLEFT", 25, 0);
+dracthyrLabel:SetPoint("BOTTOM");
+
+local dracthyrCheckbox = CreateFrame("CheckButton", nil, dracthyrContainer, "UICheckButtonTemplate");
+dracthyrCheckbox:SetPoint("LEFT", dracthyrContainer, "CENTER", dracthyrContainer:GetWidth() / 4, 0);
+dracthyrCheckbox:SetChecked(GetDracthyrAuraForCurrentClass());
+
+if DracthyrA or DracthyrH then
+    tinsert(elements, dracthyrContainer);
+end
 
 local overrideContainer = CreateFrame("Frame", nil, UI);
 overrideContainer:SetSize(300, 20);
@@ -422,6 +467,12 @@ local function OnCancelCheckboxClicked()
 end
 cancelCheckbox:SetScript("OnClick", OnCancelCheckboxClicked);
 
+local function OnDracthyrCheckboxClicked()
+    isDirty = true;
+    UpdateTitle();
+end
+dracthyrCheckbox:SetScript("OnClick", OnDracthyrCheckboxClicked);
+
 --- for our overrideEditBox
 local function OnEditBoxEnterPressed()
     local spellID = GetOverrideEditBoxSpellID();
@@ -435,6 +486,9 @@ local function OnSaveButtonClicked()
 
     local cancel = cancelCheckbox:GetChecked();
     SetCancelAuraForCurrentClass(cancel);
+
+    local dracthyr = dracthyrCheckbox:GetChecked();
+    SetDracthyrAuraForCurrentClass(dracthyr);
 
     local spellID = GetOverrideEditBoxSpellID();
     SetOverrideSpellIDForCurrentClass(spellID);

@@ -3,6 +3,8 @@ local addonName, L = ...;
 local SETTINGS = SlowFaller.Settings;
 local CLASSES = SlowFaller.CLASSES;
 local PLAYER_CLASS = SlowFaller.PLAYER_CLASS;
+local DracthyrA = select(3, UnitRace("player")) == 52
+local DracthyrH = select(3, UnitRace("player")) == 70
 local SKIPPED_DOUBLE_JUMP = false;
 local IN_COMBAT = InCombatLockdown();
 local JUMPKEY1, JUMPKEY2;
@@ -46,6 +48,12 @@ function EventFrame:OnKeyDown(key)
         local spellName = C_Spell.GetSpellName(spellID);
         local spellAura = C_UnitAuras.GetAuraDataBySpellName("player", spellName);
         local shouldCancel = SETTINGS.ShouldCancelAura();
+        local dracthyr = SETTINGS.ShouldDracthyrAura();
+
+        if not dracthyr and (DracthyrA or DracthyrH) then
+            return;
+        end
+
         if spellAura and shouldCancel then
             local canCancel = C_UnitAuras.IsAuraFilteredOutByInstanceID("player", spellAura.auraInstanceID, "CANCELABLE");
             if canCancel then
