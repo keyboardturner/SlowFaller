@@ -1,3 +1,23 @@
+# 0.2.9
+
+Added ability to choose spell cast when double jumping per class
+
+Support addon categories :)
+
+### The real patch notes (100% real no fake)
+
+ - Fixed an egregious disaster
+
+ - Fixed the fix for fixing
+
+ - Prevented the game from exploding in combat
+
+ - Cancelled demon hunters
+
+ - Wrangled Bad Dragons
+
+ - Cancelled everyone
+
 # 0.2.8
 
 11.1.0 toc update
