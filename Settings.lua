@@ -95,7 +95,7 @@ local DefaultSettingsPerClass = {
     },
     [CLASSES.DEMONHUNTER] = {
         SpellID = 131347,
-        Cancel = false,
+        Cancel = true,
         Enable = true,
     },
     [CLASSES.EVOKER] = {
