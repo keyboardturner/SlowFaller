@@ -1,3 +1,9 @@
+# 0.3.0
+
+Prevented a calamity that occurred with druid flight form. 
+
+ - If flight form is active it should no longer overwrite. It should also not try to cast any spells if the ability to glide is enabled, just in case.
+
 # 0.2.9
 
 Added ability to choose spell cast when double jumping per class
