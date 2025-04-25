@@ -307,6 +307,7 @@ local DracthyrH = select(3, UnitRace("player")) == 70
 
 local dracthyrContainer = CreateFrame("Frame", nil, UI);
 dracthyrContainer:SetSize(300, 20);
+dracthyrContainer.ignoreInLayout = true;
 
 local dracthyrLabel = dracthyrContainer:CreateFontString(nil, "ARTWORK", "GameFontWhite");
 dracthyrLabel:SetJustifyH("CENTER");
@@ -320,6 +321,7 @@ dracthyrCheckbox:SetChecked(GetDracthyrAuraForCurrentClass());
 
 if DracthyrA or DracthyrH then
 	tinsert(elements, dracthyrContainer);
+    dracthyrContainer.ignoreInLayout = false;
 end
 
 local overrideContainer = CreateFrame("Frame", nil, UI);
