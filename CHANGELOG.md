@@ -1,3 +1,7 @@
+# 0.3.1
+
+Fix to settings frame extending to funni sizes
+
 # 0.3.0
 
 Prevented a calamity that occurred with druid flight form. 
