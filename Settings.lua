@@ -386,7 +386,7 @@ end);
 defaultsButton:SetScript("OnEvent", function(self, event)
 	if event == "MODIFIER_STATE_CHANGED" then
 		self:SetEnabled(IsShiftKeyDown());
-		if defaultsButton:IsShown() and defaultsButton:IsMouseOver() then
+		if defaultsButton:IsVisible() and defaultsButton:IsShown() and defaultsButton:IsMouseOver() then
 			defaultsButton:GetScript("OnEnter")(defaultsButton);
 		end
 	end
