@@ -1,3 +1,7 @@
+# 0.3.2
+
+Fix to the very funny and not at all annoying shift key tooltip appearing under the mysterious circumstance of holding down the shift key while the window is hidden
+
 # 0.3.1
 
 Fix to settings frame extending to funni sizes
