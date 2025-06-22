@@ -17,6 +17,7 @@ local BAD_SPELLS = {
 	383363, -- Lift Off
 	448876, -- Fungal Footpads (delve double jump)
 	783,	-- Flight Form (prevents liftoff for skyriding)
+	449609, -- Lighter Than Air (monk roll talent)
 	--1459, -- Arcane Intellect test
 };
 SlowFaller.BAD_SPELLS = BAD_SPELLS;
