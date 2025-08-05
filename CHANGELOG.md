@@ -1,3 +1,7 @@
+# 0.3.5
+
+11.2.0 toc updates
+
 # 0.3.4
 
 Added monk roll talent Lighter Than Air buff to bad spells list
