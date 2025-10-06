@@ -1,3 +1,7 @@
+# 0.3.6
+
+11.2.5 toc update
+
 # 0.3.5
 
 11.2.0 toc updates
