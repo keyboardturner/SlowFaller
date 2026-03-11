@@ -15,6 +15,16 @@ end
 
 local EventFrame = CreateFrame("Frame");
 
+local MacroButton = CreateFrame("Button", "SlowFallerMacroButton", nil, "SecureActionButtonTemplate");
+MacroButton:SetAttribute("type", "macro");
+MacroButton:RegisterForClicks("AnyDown", "AnyUp");
+
+function SlowFaller.UpdateMacroButtonText()
+	if not InCombatLockdown() then
+		MacroButton:SetAttribute("macrotext", SETTINGS.GetMacroText() or "");
+	end
+end
+
 function EventFrame:OnEvent(event, ...)
 	if self[event] then
 		self[event](self, ...);
@@ -46,29 +56,46 @@ function EventFrame:OnKeyDown(key)
 			return;
 		end
 
-		local spellID = SETTINGS.GetOverrideSpellID();
-		if not spellID then
-			return;
-		end
-		local spellName = C_Spell.GetSpellName(spellID);
-		local spellAura = C_UnitAuras.GetAuraDataBySpellName("player", spellName);
-		local shouldCancel = SETTINGS.ShouldCancelAura();
-		local dracthyr = SETTINGS.ShouldDracthyrAura();
+		local useMacro = SETTINGS.GetUseMacro();
 
-		if not dracthyr and (DracthyrA or DracthyrH) then
-			return;
-		end
+		if not useMacro then
+			-- Spell Logic
+			local spellID = SETTINGS.GetOverrideSpellID();
+			if not spellID then
+				return;
+			end
+			local spellName = C_Spell.GetSpellName(spellID);
+			local spellAura = C_UnitAuras.GetAuraDataBySpellName("player", spellName);
+			local shouldCancel = SETTINGS.ShouldCancelAura();
+			local dracthyr = SETTINGS.ShouldDracthyrAura();
 
-		if spellAura and shouldCancel then
-			local canCancel = C_UnitAuras.IsAuraFilteredOutByInstanceID("player", spellAura.auraInstanceID, "CANCELABLE");
-			if canCancel then
-				CancelSpellByName(spellName);
-				ClearOverrideBindings(self);
+			if not dracthyr and (DracthyrA or DracthyrH) then
+				return;
+			end
+
+			if spellAura and shouldCancel then
+				local canCancel = C_UnitAuras.IsAuraFilteredOutByInstanceID("player", spellAura.auraInstanceID, "CANCELABLE");
+				if canCancel then
+					CancelSpellByName(spellName);
+					ClearOverrideBindings(self);
+					return;
+				end
+			end
+		else
+			-- Macro Logic
+			local macroText = SETTINGS.GetMacroText();
+			if not macroText or macroText == "" then
 				return;
 			end
 		end
 
-		local override = SETTINGS.GetOverrideCommand();
+		local override;
+		if useMacro then
+			override = "CLICK SlowFallerMacroButton:LeftButton";
+		else
+			override = SETTINGS.GetOverrideCommand();
+		end
+
 		if override then
 			local isPriority = true;
 			SetOverrideBinding(self, isPriority, key, override);
@@ -98,3 +125,5 @@ EventFrame:SetPropagateKeyboardInput(true);
 EventFrame:RegisterEvent("UPDATE_BINDINGS");
 EventFrame:RegisterEvent("PLAYER_REGEN_ENABLED");
 EventFrame:RegisterEvent("PLAYER_REGEN_DISABLED");
+
+C_Timer.After(1, function() SlowFaller.UpdateMacroButtonText() end)

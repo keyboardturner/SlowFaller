@@ -1,3 +1,9 @@
+# 0.4.1
+
+Added an option to input macrotext as the override functionality
+
+Fixed potential calamity with the funni save/defaults button somehow not being present at the bottom and the menu stretching really tall i think?
+
 # 0.4.0
 
 12.0.1 toc update

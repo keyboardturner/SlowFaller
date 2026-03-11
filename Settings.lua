@@ -121,13 +121,26 @@ local DefaultSettingsPerClass = {
 
 if not SlowFaller_DB then
 	SlowFaller_DB = CopyTable(DefaultSettingsPerClass);
-elseif SlowFaller_DB.Levitate ~= nil then
-	-- migrate settings from the old version
-	local newSettings = CopyTable(DefaultSettingsPerClass);
-	newSettings[CLASSES.PRIEST].Enable = SlowFaller_DB.Levitate;
-	newSettings[CLASSES.MAGE].Enable = SlowFaller_DB.Slowfall;
-	newSettings[CLASSES.DRUID].Enable = SlowFaller_DB.Flap;
-	SlowFaller_DB = newSettings;
+else
+	if SlowFaller_DB.Levitate ~= nil then
+		-- migrate settings from the old version
+		local newSettings = CopyTable(DefaultSettingsPerClass);
+		newSettings[CLASSES.PRIEST].Enable = SlowFaller_DB.Levitate;
+		newSettings[CLASSES.MAGE].Enable = SlowFaller_DB.Slowfall;
+		newSettings[CLASSES.DRUID].Enable = SlowFaller_DB.Flap;
+		SlowFaller_DB = newSettings;
+	end
+	
+	for classId, data in pairs(SlowFaller_DB) do
+		if type(data) == "table" then
+			if data.UseMacro == nil then
+				data.UseMacro = false;
+			end
+			if data.MacroText == nil then
+				data.MacroText = "";
+			end
+		end
+	end
 end
 
 local function GetColoredClassName()
@@ -181,6 +194,22 @@ local function GetDefaultOverrideSpellIDForCurrentClass()
 	return DefaultSettingsPerClass[PLAYER_CLASS].SpellID;
 end
 
+local function GetUseMacroForCurrentClass()
+	return GetSettingsForCurrentClass().UseMacro;
+end
+
+local function SetUseMacroForCurrentClass(useMacro)
+	SlowFaller_DB[PLAYER_CLASS].UseMacro = useMacro;
+end
+
+local function GetMacroTextForCurrentClass()
+	return GetSettingsForCurrentClass().MacroText;
+end
+
+local function SetMacroTextForCurrentClass(macroText)
+	SlowFaller_DB[PLAYER_CLASS].MacroText = macroText;
+end
+
 ------------
 --- settings api
 
@@ -190,10 +219,22 @@ function Settings.GetOverrideSpellID()
 	return GetOverrideSpellIDForCurrentClass();
 end
 
+function Settings.GetUseMacro()
+	return GetUseMacroForCurrentClass();
+end
+
+function Settings.GetMacroText()
+	return GetMacroTextForCurrentClass();
+end
+
 function Settings.GetOverrideCommand()
-	local spellID = GetOverrideSpellIDForCurrentClass();
-	if spellID then
-		return format("SPELL %s", C_Spell.GetSpellName(spellID));
+	if Settings.GetUseMacro() then
+		return "CLICK SlowFallerMacroButton:LeftButton";
+	else
+		local spellID = GetOverrideSpellIDForCurrentClass();
+		if spellID then
+			return format("SPELL %s", C_Spell.GetSpellName(spellID));
+		end
 	end
 end
 
@@ -325,6 +366,50 @@ if DracthyrA or DracthyrH then
     dracthyrContainer.ignoreInLayout = false;
 end
 
+local useMacroContainer = CreateFrame("Frame", nil, UI);
+useMacroContainer:SetSize(300, 20);
+
+local useMacroLabel = useMacroContainer:CreateFontString(nil, "ARTWORK", "GameFontWhite");
+useMacroLabel:SetJustifyH("CENTER");
+useMacroLabel:SetText(L.SettingsUseMacroTextLabel);
+useMacroLabel:SetPoint("TOPLEFT", 25, 0);
+useMacroLabel:SetPoint("BOTTOM");
+
+local useMacroCheckbox = CreateFrame("CheckButton", nil, useMacroContainer, "UICheckButtonTemplate");
+useMacroCheckbox:SetPoint("LEFT", useMacroContainer, "CENTER", useMacroContainer:GetWidth() / 4, 0);
+useMacroCheckbox:SetChecked(GetUseMacroForCurrentClass());
+
+tinsert(elements, useMacroContainer);
+
+local macroInputContainer = CreateFrame("Frame", nil, UI, "ResizeLayoutFrame");
+macroInputContainer:SetSize(300, 100);
+macroInputContainer.fixedWidth = 300;
+macroInputContainer.minimumHeight = 100;
+
+local macroScrollFrame = CreateFrame("ScrollFrame", "SlowFallerMacroScrollFrame", macroInputContainer, "InputScrollFrameTemplate");
+macroScrollFrame:SetPoint("TOPLEFT", 20, 0);
+macroScrollFrame:SetPoint("BOTTOMRIGHT", -20, 0);
+macroScrollFrame.EditBox:SetWidth(260);
+macroScrollFrame.EditBox:SetFontObject("GameFontWhite");
+macroScrollFrame.CharCount:Hide();
+
+tinsert(elements, macroInputContainer);
+
+local initialAnchor = CreateAnchor("TOPLEFT", UI, "TOPLEFT", 8, -38);
+
+local padding = 10;
+
+local function RebuildLayout()
+	local activeElements = {}
+	for _, el in ipairs(elements) do
+		if not el.ignoreInLayout then
+			tinsert(activeElements, el);
+		end
+	end
+	AnchorUtil.VerticalLayout(activeElements, initialAnchor, padding);
+	UI:Layout();
+end
+
 local overrideContainer = CreateFrame("Frame", nil, UI);
 overrideContainer:SetSize(300, 20);
 
@@ -363,17 +448,25 @@ spellInfoDesc:SetPoint("TOPRIGHT", -20, -45);
 
 tinsert(elements, spellInfoContainer);
 
-local saveButton = CreateFrame("Button", nil, UI, "SharedGoldRedButtonLargeTemplate");
+local saveButtonContainer = CreateFrame("Frame", nil, UI);
+saveButtonContainer:SetSize(300, 30);
+
+local saveButton = CreateFrame("Button", nil, saveButtonContainer, "SharedGoldRedButtonLargeTemplate");
 saveButton:SetText(L.SettingsSaveButtonLabel);
+saveButton:SetPoint("CENTER", saveButtonContainer, "CENTER", 0, 0);
 
-local lastElement = elements[#elements];
-saveButton:SetPoint("TOP", lastElement, "BOTTOM", 0, -10);
+tinsert(elements, saveButtonContainer);
 
-local defaultsButton = CreateFrame("Button", nil, UI, "SharedButtonSmallTemplate");
+local defaultsButtonContainer = CreateFrame("Frame", nil, UI);
+defaultsButtonContainer:SetSize(300, 24);
+
+local defaultsButton = CreateFrame("Button", nil, defaultsButtonContainer, "SharedButtonSmallTemplate");
 defaultsButton:SetWidth(160);
 defaultsButton:SetText(L.SettingsDefaultsButtonLabel);
-defaultsButton:SetPoint("TOP", saveButton, "BOTTOM", 0, -5);
+defaultsButton:SetPoint("CENTER", defaultsButtonContainer, "CENTER", 0, 0);
 defaultsButton:Disable();
+
+tinsert(elements, defaultsButtonContainer);
 defaultsButton:SetScript("OnEnter", function(self)
 	local tooltipText = self:IsEnabled() and L.SettingsDefaultsButtonTooltipEnabled or L.SettingsDefaultsButtonTooltipDisabled;
 	GameTooltip:SetOwner(self, "ANCHOR_CURSOR_RIGHT");
@@ -445,9 +538,48 @@ local function PopulateUI(previewSpellID)
 	local spellName = previewSpellID and C_Spell.GetSpellName(previewSpellID) or "";
 	overrideEditBox:SetText(spellName);
 	UpdateSpellInfo(previewSpellID);
+	
+	local useMacro = GetUseMacroForCurrentClass();
+	useMacroCheckbox:SetChecked(useMacro);
+	macroScrollFrame.EditBox:SetText(GetMacroTextForCurrentClass() or "");
+
+	if useMacro then
+		overrideContainer:Hide(); overrideContainer.ignoreInLayout = true;
+		spellInfoContainer:Hide(); spellInfoContainer.ignoreInLayout = true;
+		macroInputContainer:Show(); macroInputContainer.ignoreInLayout = false;
+	else
+		overrideContainer:Show(); overrideContainer.ignoreInLayout = false;
+		spellInfoContainer:Show(); spellInfoContainer.ignoreInLayout = false;
+		macroInputContainer:Hide(); macroInputContainer.ignoreInLayout = true;
+	end
+
 	UpdateTitle();
+	RebuildLayout();
 	UI:MarkDirty();
 end
+
+useMacroCheckbox:SetScript("OnClick", function(self)
+	isDirty = true;
+	local isChecked = self:GetChecked();
+	if isChecked then
+		overrideContainer:Hide(); overrideContainer.ignoreInLayout = true;
+		spellInfoContainer:Hide(); spellInfoContainer.ignoreInLayout = true;
+		macroInputContainer:Show(); macroInputContainer.ignoreInLayout = false;
+	else
+		overrideContainer:Show(); overrideContainer.ignoreInLayout = false;
+		spellInfoContainer:Show(); spellInfoContainer.ignoreInLayout = false;
+		macroInputContainer:Hide(); macroInputContainer.ignoreInLayout = true;
+	end
+	RebuildLayout();
+	UpdateTitle();
+end);
+
+macroScrollFrame.EditBox:SetScript("OnTextChanged", function(self, userInput)
+	if userInput then
+		isDirty = true;
+		UpdateTitle();
+	end
+end)
 
 local function GetOverrideEditBoxSpellID()
 	local newSpellName = overrideEditBox:GetText();
@@ -458,6 +590,23 @@ local function GetOverrideEditBoxSpellID()
 
 	return spellID;
 end
+
+local function OnSaveButtonClicked()
+	SetEnabledForCurrentClass(enableCheckbox:GetChecked());
+	SetCancelAuraForCurrentClass(cancelCheckbox:GetChecked());
+	SetDracthyrAuraForCurrentClass(dracthyrCheckbox:GetChecked());
+	SetOverrideSpellIDForCurrentClass(GetOverrideEditBoxSpellID());
+	SetUseMacroForCurrentClass(useMacroCheckbox:GetChecked());
+	SetMacroTextForCurrentClass(macroScrollFrame.EditBox:GetText());
+
+	if SlowFaller.UpdateMacroButtonText then
+		SlowFaller.UpdateMacroButtonText();
+	end
+
+	isDirty = false;
+	UpdateTitle();
+end
+saveButton:SetScript("OnClick", OnSaveButtonClicked);
 
 local function OnEnableCheckboxClicked()
 	isDirty = true;
@@ -484,23 +633,6 @@ local function OnEditBoxEnterPressed()
 end
 overrideEditBox:SetScript("OnEnterPressed", OnEditBoxEnterPressed);
 
-local function OnSaveButtonClicked()
-	local enable = enableCheckbox:GetChecked();
-	SetEnabledForCurrentClass(enable);
-
-	local cancel = cancelCheckbox:GetChecked();
-	SetCancelAuraForCurrentClass(cancel);
-
-	local dracthyr = dracthyrCheckbox:GetChecked();
-	SetDracthyrAuraForCurrentClass(dracthyr);
-
-	local spellID = GetOverrideEditBoxSpellID();
-	SetOverrideSpellIDForCurrentClass(spellID);
-	isDirty = false;
-	UpdateTitle();
-end
-saveButton:SetScript("OnClick", OnSaveButtonClicked);
-
 local function OnDefaultsButtonClicked(self)
 	local defaultSpellID = GetDefaultOverrideSpellIDForCurrentClass();
 	SetOverrideSpellIDForCurrentClass(defaultSpellID);
@@ -516,11 +648,6 @@ UI:SetScript("OnShow", OnSettingsFrameShow);
 
 ------------
 --- layout stuff
-
-local initialAnchor = CreateAnchor("TOPLEFT", UI, "TOPLEFT", 8, -38);
-
-local padding = 10;
-AnchorUtil.VerticalLayout(elements, initialAnchor, padding);
 
 ------------
 
