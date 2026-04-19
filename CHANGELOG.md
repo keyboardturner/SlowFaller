@@ -1,3 +1,7 @@
+# 0.4.2
+
+12.0.5 toc update
+
 # 0.4.1
 
 Added an option to input macrotext as the override functionality
