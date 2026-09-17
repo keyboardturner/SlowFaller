@@ -65,6 +65,7 @@ function EventFrame:OnKeyDown(key)
 				return;
 			end
 			local spellName = C_Spell.GetSpellName(spellID);
+			if not spellName then return end
 			local spellAura = C_UnitAuras.GetAuraDataBySpellName("player", spellName);
 			local shouldCancel = SETTINGS.ShouldCancelAura();
 			local dracthyr = SETTINGS.ShouldDracthyrAura();

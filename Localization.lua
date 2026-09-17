@@ -10,13 +10,16 @@ setmetatable(L, {__index=defaultFunc});
 
 local LOCALE = GetLocale()
 
+local function GetSafeSpellLink(spellID, fallbackName)
+    local spellName = Spell:CreateFromSpellID(spellID):GetSpellName() or fallbackName
+    return "\124cffffd000\124Hspell:" .. spellID .. "\124h[" .. spellName .. "]\124h\124r"
+end
+
 local SpellNames = {
-
-Flightform = "\124cffffd000\124Hspell:276029\124h[" .. Spell:CreateFromSpellID(276029):GetSpellName() .. "]\124h\124r",
-Flap = "\124cffffd000\124Hspell:164862\124h[" .. Spell:CreateFromSpellID(164862):GetSpellName() .. "]\124h\124r",
-Slowfall = "\124cffffd000\124Hspell:130\124h[" .. Spell:CreateFromSpellID(130):GetSpellName() .. "]\124h\124r",
-Levitate = "\124cffffd000\124Hspell:1706\124h[" .. Spell:CreateFromSpellID(1706):GetSpellName() .. "]\124h\124r",
-
+    Flightform = GetSafeSpellLink(276029, "Flight Form"),
+    Flap = GetSafeSpellLink(164862, "Flap"),
+    Slowfall = GetSafeSpellLink(130, "Slow Fall"),
+    Levitate = GetSafeSpellLink(1706, "Levitate"),
 };
 
 SpellNames.class = select(2, UnitClassBase("player"))
@@ -60,6 +63,7 @@ if LOCALE == "enUS" then
 	L["SettingsDefaultsButtonTooltipEnabled"] = "Reset override configuration to the defaults for your current class."
 	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-CLICK to reset your configuration to the defaults for your current class."
 	L["SettingsUseMacroTextLabel"] = "Use Macro Text"
+	L["SpellIDorName"] = "Spell ID or Name"
 return end
 
 if LOCALE == "esES" or LOCALE == "esMX" then
@@ -87,6 +91,7 @@ if LOCALE == "esES" or LOCALE == "esMX" then
 	L["SettingsDefaultsButtonTooltipEnabled"] = "Restablecer la configuración personalizada a los valores predeterminados de tu clase actual."
 	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-CLIC para restablecer tu configuración a los valores predeterminados de tu clase actual."
 	L["SettingsUseMacroTextLabel"] = "Usar texto de macro"
+	L["SpellIDorName"] = "ID o nombre del hechizo"
 
 return end
 
@@ -114,6 +119,7 @@ if LOCALE == "deDE" then
 	L["SettingsDefaultsButtonTooltipEnabled"] = "Überschreibungen auf die Standardwerte deiner aktuellen Klasse zurücksetzen."
 	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-KLICK zum Zurücksetzen der Konfiguration auf Standardwerte deiner aktuellen Klasse."
 	L["SettingsUseMacroTextLabel"] = "Makrotext verwenden"
+	L["SpellIDorName"] = "Zauber-ID oder -Name"
 return end
 
 if LOCALE == "frFR" then
@@ -141,6 +147,7 @@ if LOCALE == "frFR" then
 	L["SettingsDefaultsButtonTooltipEnabled"] = "Réinitialiser la configuration de remplacement aux valeurs par défaut de votre classe actuelle."
 	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-CLIC pour réinitialiser la configuration aux valeurs par défaut de votre classe actuelle."
 	L["SettingsUseMacroTextLabel"] = "Utiliser le texte de macro"
+	L["SpellIDorName"] = "ID ou nom du sort"
 return end
 
 if LOCALE == "itIT" then
@@ -167,6 +174,7 @@ if LOCALE == "itIT" then
 	L["SettingsDefaultsButtonTooltipEnabled"] = "Ripristina la configurazione ai valori predefiniti della tua classe attuale."
 	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-CLIC per ripristinare la configurazione ai predefiniti della tua classe attuale."
 	L["SettingsUseMacroTextLabel"] = "Usa testo macro"
+	L["SpellIDorName"] = "ID o nome dell'incantesimo"
 return end
 
 if LOCALE == "ptBR" then
@@ -193,6 +201,7 @@ if LOCALE == "ptBR" then
 	L["SettingsDefaultsButtonTooltipEnabled"] = "Redefine a configuração personalizada para os padrões da sua classe atual."
 	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-CLIQUE para redefinir a configuração para os padrões da sua classe atual."
 	L["SettingsUseMacroTextLabel"] = "Usar texto de macro"
+	L["SpellIDorName"] = "ID ou nome da magia"
 	-- Note that the EU Portuguese WoW client also
 	-- uses the Brazilian Portuguese locale code.
 return end
@@ -221,6 +230,7 @@ if LOCALE == "ruRU" then
 	L["SettingsDefaultsButtonTooltipEnabled"] = "Сбросить настройки замены к значениям по умолчанию для текущего класса."
 	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-КЛИК для сброса настроек к значениям по умолчанию."
 	L["SettingsUseMacroTextLabel"] = "Использовать текст макроса"
+	L["SpellIDorName"] = "ID или название заклинания"
 return end
 
 if LOCALE == "koKR" then
@@ -247,6 +257,7 @@ if LOCALE == "koKR" then
 	L["SettingsDefaultsButtonTooltipEnabled"] = "현재 클래스의 기본 설정으로 덮어쓰기 구성을 초기화합니다."
 	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-클릭으로 현재 클래스의 기본값으로 설정 초기화"
 	L["SettingsUseMacroTextLabel"] = "매크로 텍스트 사용"
+	L["SpellIDorName"] = "주문 ID 또는 이름"
 return end
 
 if LOCALE == "zhCN" then
@@ -274,6 +285,7 @@ if LOCALE == "zhCN" then
 	L["SettingsDefaultsButtonTooltipEnabled"] = "重置当前职业的覆盖配置为默认值。"
 	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-点击以重置为当前职业默认配置。"
 	L["SettingsUseMacroTextLabel"] = "使用宏文本"
+	L["SpellIDorName"] = "法术 ID 或名称"
 return end
 
 if LOCALE == "zhTW" then
@@ -301,4 +313,5 @@ if LOCALE == "zhTW" then
 	L["SettingsDefaultsButtonTooltipEnabled"] = "將目前職業的覆寫設定重設為預設值。"
 	L["SettingsDefaultsButtonTooltipDisabled"] = SHIFT_KEY_TEXT .. "-點擊以重設目前職業的預設配置。"
 	L["SettingsUseMacroTextLabel"] = "使用巨集文字"
+	L["SpellIDorName"] = "法術 ID 或名稱"
 return end
