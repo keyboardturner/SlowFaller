@@ -1,3 +1,11 @@
+# 0.4.5
+
+Fixed some potential issues where spell data could have been nil
+
+Added ability to empty a spell to be simply blank
+
+WoW Forever testing - This is an in-development testing version. Some things may throw errors or explode.
+
 # 0.4.4
 
 12.1.0 toc update
