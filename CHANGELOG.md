@@ -1,3 +1,7 @@
+# 0.4.6
+
+12.1.5 toc update
+
 # 0.4.5
 
 Fixed some potential issues where spell data could have been nil
