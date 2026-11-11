@@ -419,11 +419,14 @@ overrideLabel:SetText(L.SettingsOverrideLabel);
 overrideLabel:SetPoint("TOPLEFT", 25, 0);
 overrideLabel:SetPoint("BOTTOM");
 
-local overrideEditBox = CreateFrame("EditBox", nil, overrideContainer, "InputBoxTemplate");
+local overrideEditBox = CreateFrame("EditBox", nil, overrideContainer, "SearchBoxTemplate");
 overrideEditBox:SetAutoFocus(false);
 overrideEditBox:SetFontObject("GameFontWhite");
 overrideEditBox:SetPoint("TOPLEFT", overrideContainer, "TOP", 10, 0);
 overrideEditBox:SetPoint("BOTTOMRIGHT", -20, 0);
+
+overrideEditBox.searchIcon:Hide();
+overrideEditBox.Instructions:SetText(L["SpellIDorName"]);
 
 SetupSimpleTooltipForFrame(overrideContainer, L.SettingsOverrideTooltip, nil, L.SettingsOverrideTooltipInstruction);
 
@@ -436,7 +439,17 @@ spellInfoContainer.minimumHeight = 100;
 
 local spellInfoIcon = CreateFrame("Button", nil, spellInfoContainer, "UIPanelBorderedButtonTemplate");
 spellInfoIcon:SetPoint("TOPLEFT", 70, 0);
-spellInfoIcon:Disable();
+
+spellInfoIcon:SetScript("OnEnter", function(self)
+	if currentPreviewSpellID then
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+		GameTooltip:SetSpellByID(currentPreviewSpellID);
+		GameTooltip:Show();
+	end
+end);
+spellInfoIcon:SetScript("OnLeave", function(self)
+	GameTooltip:Hide();
+end);
 
 local spellInfoLabel = spellInfoContainer:CreateFontString(nil, "ARTWORK", "GameFontWhite");
 spellInfoLabel:SetPoint("LEFT", spellInfoIcon, "RIGHT", 40, 0);
@@ -491,6 +504,7 @@ defaultsButton:RegisterEvent("MODIFIER_STATE_CHANGED");
 --- data
 
 local isDirty = false;
+local currentPreviewSpellID = nil;
 
 local function UpdateTitle()
 	local title = addonName;
@@ -533,6 +547,8 @@ local function PopulateUI(previewSpellID)
 	if not previewSpellID then
 		previewSpellID = GetOverrideSpellIDForCurrentClass();
 	end
+	
+	currentPreviewSpellID = previewSpellID;
 
 	-- populate the editbox
 	local spellName = previewSpellID and C_Spell.GetSpellName(previewSpellID) or "";
@@ -583,6 +599,10 @@ end)
 
 local function GetOverrideEditBoxSpellID()
 	local newSpellName = overrideEditBox:GetText();
+	if newSpellName == "" then 
+		return nil; 
+	end
+
 	local spellID = tonumber(newSpellName);
 	if not spellID then
 		spellID = C_Spell.GetSpellIDForSpellIdentifier(newSpellName);
@@ -627,11 +647,27 @@ end
 dracthyrCheckbox:SetScript("OnClick", OnDracthyrCheckboxClicked);
 
 --- for our overrideEditBox
-local function OnEditBoxEnterPressed()
-	local spellID = GetOverrideEditBoxSpellID();
-	PopulateUI(spellID);
+local function OnEditBoxEnterPressed(self)
+	local newSpellName = overrideEditBox:GetText();
+	if newSpellName == "" then
+		UpdateSpellInfo(nil);
+		currentPreviewSpellID = nil;
+		isDirty = true;
+		UpdateTitle();
+	else
+		local spellID = GetOverrideEditBoxSpellID();
+		PopulateUI(spellID);
+	end
+	self:ClearFocus();
 end
 overrideEditBox:SetScript("OnEnterPressed", OnEditBoxEnterPressed);
+
+overrideEditBox.clearButton:HookScript("OnClick", function()
+	UpdateSpellInfo(nil);
+	currentPreviewSpellID = nil;
+	isDirty = true;
+	UpdateTitle();
+end);
 
 local function OnDefaultsButtonClicked(self)
 	local defaultSpellID = GetDefaultOverrideSpellIDForCurrentClass();
